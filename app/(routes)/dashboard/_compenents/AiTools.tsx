@@ -1,5 +1,6 @@
 import { AirVent } from 'lucide-react'
 import React from 'react'
+import AiToolCard from './AiToolCard'
 
 const aiToolsList=[
   {
@@ -34,7 +35,7 @@ path : '/ai-chat'
   {
 name: 'Cover Letter Generator',
 desc:'Generate a cover letter',
-icon:'/cover-letter.png',
+icon:'/cover.png',
 button: 'Generate Now',
 path : '/ai-chat'
 
@@ -50,9 +51,9 @@ function AiTools() {
       <h2 className='font-bold text-xl'>Available AI Tools</h2>
       <p>Smart Building and  Shape Your Creer with this...</p>
 
-<div>
-  {aiToolsList.map((tool, index) => (
-    <AiTools key={index} tool={tool} />
+<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
+  {aiToolsList.map((tool:any, index) => (
+    <AiToolCard tool={tool} key={index} />
   ))}
 </div>
 
