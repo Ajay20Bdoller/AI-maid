@@ -8,7 +8,7 @@ name: 'AI Career Q&A Chat',
 desc:'Chat with AI Agent',
 icon:'/chatbot.png',
 button: 'Lets Chat',
-path : '/ai-chat'
+path : '/ai-tools/ai-chat'
 
 },
 
