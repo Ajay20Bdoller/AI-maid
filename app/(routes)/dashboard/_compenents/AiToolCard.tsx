@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
-import { Link } from 'lucide-react'
+import Link from 'next/link' 
+
 import React from 'react'
 
 interface TOOL{
@@ -20,9 +21,9 @@ function AiToolCard({tool}: AiToolCardProps) {
     <img src={tool.icon} width={40} height={40} alt={tool.name}/>   
 <h2 className='font-bold mt-3'>{tool.name}</h2>
 <p className='text-gray-400'>{tool.desc}</p>
-{/* <Link href={tool.path}> */}
+<Link href={tool.path} className="w-full">
 <Button className='w-full mt-3'>{tool.button}</Button>
-{/* </Link> */}
+</Link>
 
     </div>
   )
