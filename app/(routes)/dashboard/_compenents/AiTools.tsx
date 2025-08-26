@@ -7,7 +7,7 @@ const aiToolsList=[
 name: 'AI Career Q&A Chat',
 desc:'Chat with AI Agent',
 icon:'/chatbot.png',
-button: 'Lets Chat',
+button: "Lets Chat",
 path : '/ai-tools/ai-chat'
 
 },
