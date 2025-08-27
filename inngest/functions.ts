@@ -1,4 +1,4 @@
-import { createAgent, anthropic, openai } from '@inngest/agent-kit';
+import { createAgent, anthropic, openai, gemini } from '@inngest/agent-kit';
 
 import { inngest } from "./client";
 
@@ -15,7 +15,7 @@ export const AiCareerChatAgent= createAgent({
 name: 'AiCareerChatAgent',
 description:'An AI Agent that answers career related questions',
 system: `You are a helpful, prefessional AI Carrer coach.....`,
-model:openai({
+model:gemini({
   model:"gemini-2.5-flash",
   apiKey:process.env.GEMINI_API_KEY
 })
