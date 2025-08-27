@@ -13,18 +13,19 @@ export async function POST(req:any){
   });
 
   //get userId
-const runId=resultIds.ids[0];
+const runId=resultIds?.ids[0];
+
 
 let runStatus;
 while(true){
   runStatus=await getRuns(runId);
-  if(runStatus?.data[0].status==='Completed')
+  if(runStatus?.data[0]?.status==='Completed')
     break;
 
   await new Promise(resolve=>setTimeout(resolve,500))
 
 }
-return NextResponse.json(runStatus)
+return NextResponse.json(runStatus.data?.[0].output?.output[0])
 
 }
 
