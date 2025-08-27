@@ -89,13 +89,13 @@ useEffect(()=>{
             {message.content}
             </div>
             </div>
-          <div className='flex justify-start p-3 rounded-lg gap-2 bg-gray-50 text-black mb-2'>
-{loading&&messageList?.length-1==index && <LoaderCircle className='animate-spin'/>}
-          {message.content}
-        </div>
-        </div>
+            <div className='flex justify-start p-3 rounded-lg bg-gray-50 text-black mb-2'>
+            {loading && messageList?.length-1==index && <LoaderCircle className='animate-spin'/>}
+          </div>
+          </div>
+
       ))}
-    </div>
+      </div>
 
     <div className='flex justify-between items-center'>
 {/* input field  */}
