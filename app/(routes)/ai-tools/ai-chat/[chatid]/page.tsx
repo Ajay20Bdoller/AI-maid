@@ -67,7 +67,7 @@ setLoading(false);
 
 console.log(messageList);
 
-useEffect(()=>{
+useEffect(()=>{ 
   //same mesg into DB
   messageList.length > 0 && updateMessageList();
 
@@ -77,7 +77,7 @@ const updateMessageList=async()=>{
   const result=await axios.put('/api/history',{
     content:messageList,
     recordId:chatid
-  })
+  });
   console.log(result);
 }
 
@@ -100,9 +100,8 @@ router.replace("/ai-tools/ai-chat/" + id)
       <h2 className='font-bold text-lg'>AI Career Q&A Chat</h2>
       <p>Smarter career decisions start here - get tailored adivice, real time market insights</p>
 </div>
-<Link href='/ai-tools/ai-chat'>
 <Button onClick ={onNewChat}>+ New Chat</Button>
-</Link>
+
     </div>
     <div className='flex flex-col h-[75vh]'> {messageList?.length <=0 &&
     <div className='mt-5'>
