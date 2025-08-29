@@ -1,3 +1,4 @@
+
 "use client"
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -9,6 +10,9 @@ import EmptyState from '@/app/(routes)/ai-tools/_components/EmptyState';
 import Link from 'next/link'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
+import { useParams, useRouter } from 'next/navigation'
+import { uuid } from 'drizzle-orm/pg-core'
+import { v4 as uuidv4 } from 'uuid';
 
 type messages={
   content:string,
@@ -22,11 +26,28 @@ function AiChat() {
   const [userInput, setUserInput] = useState<string>('');
 const [loading, setLoading]=useState(false);
 const [messageList, setMessageList] = useState<messages[]>([]);
+const {chatid}: any = useParams();
+const router = useRouter();
+console.log(chatid);
+
+useEffect(()=>{
+  chatid && GetMessageList();
+},[chatid])
+
+
+const GetMessageList=async ()=>{
+  const result = await axios.get('/api/history?recordId='+chatid);
+console.log(result.data);
+setMessageList(result?.data?.content) 
+
+
+}
 
 
 
 const onSend=async()=>{
   setLoading(true);
+  
   setMessageList(prev=> [...prev,{
     content:userInput,
     role:'user',
@@ -48,12 +69,29 @@ console.log(messageList);
 
 useEffect(()=>{
   //same mesg into DB
+  messageList.length > 0 && updateMessageList();
 
 },[messageList])
 
+const updateMessageList=async()=>{
+  const result=await axios.put('/api/history',{
+    content:messageList,
+    recordId:chatid
+  })
+  console.log(result);
+}
 
+const onNewChat = async ()=>{
+  const id=uuidv4();
+  //Create New record to History Table
+  const result = await axios.post('/api/history', {
+    recordId:id, 
+    content:[]
+  });
+console.log(result);
+router.replace("/ai-tools/ai-chat/" + id) 
 
-
+}
 
   return (
     <div className='px-10 md:px-24 lg:px-36 xl:px-48'>
@@ -63,7 +101,7 @@ useEffect(()=>{
       <p>Smarter career decisions start here - get tailored adivice, real time market insights</p>
 </div>
 <Link href='/ai-tools/ai-chat'>
-<Button>+ New Chat</Button>
+<Button onClick ={onNewChat}>+ New Chat</Button>
 </Link>
     </div>
     <div className='flex flex-col h-[75vh]'> {messageList?.length <=0 &&
@@ -103,3 +141,4 @@ useEffect(()=>{
 }
 
 export default AiChat
+
