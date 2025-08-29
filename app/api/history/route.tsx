@@ -10,9 +10,10 @@ export async function POST(req: Request) {
   const user = await currentUser();
 
   try {
+    //insert record
     const result = await db.insert(HistoryTable).values({
-      recordId,
-      content,
+      recordId: recordId,
+      content: content,
       userEmail: user?.primaryEmailAddress?.emailAddress,
       createdAt: new Date().toISOString(),
     });
@@ -54,7 +55,7 @@ export async function PUT(req: Request) {
   try {
     await db
       .update(HistoryTable)
-      .set({ content })
+      .set({ content:content,  })
       .where(eq(HistoryTable.recordId, recordId));
 
     return NextResponse.json({ success: true });
