@@ -1,11 +1,12 @@
-import 'dotenv/config';
-import { defineConfig } from 'drizzle-kit';
+import type { Config } from "drizzle-kit";
 
-export default defineConfig({
+export default {
+  schema: "./src/schema.ts",   // tu apni schema file kahan rakhega
+  out: "./drizzle",            // migrations isi folder me aayengi
+  dialect: "postgresql",       // kyunki tu Neon (Postgres) use kar raha hai
+  dbCredentials: {
+    url: process.env.DATABASE_URL!, // Neon ka connection string
+  },
+} satisfies Config;
 
-    schema: './configs/schema.ts',
-    dialect: 'postgresql',
-    dbCredentials: {
-        url: process.env.NEXT_PUBLIC_NEON_DB_CONNECTION_STRING!,
-    },
-});
+
