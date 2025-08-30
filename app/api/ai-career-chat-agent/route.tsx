@@ -9,10 +9,11 @@ export async function POST(req:any){
     name:'AiCareerAgent',
     data: {
       userInput:userInput
-    }
+    },
   });
+  //  console.log("🔹 resultIds:", resultIds);
 
-  //get userId
+   //get userId
 const runId=resultIds?.ids[0];
 
 
@@ -30,7 +31,7 @@ return NextResponse.json(runStatus.data?.[0].output?.output[0])
 }
 
 export async function getRuns(runId:string){
-  const result=await axios.get(process.env.INNGEST_SERVER_HOST+'/v1/events/'+{runId}+'/runs',{
+  const result=await axios.get(process.env.INNGEST_SERVER_HOST + '/v1/events/' + runId + '/runs',{
     headers:{
       Authorization:`Bearer ${process.env.INNGEST_SIGNING_KEY}`
     }
