@@ -16,19 +16,22 @@ name: 'AiCareerChatAgent',
 description:'An AI Agent that answers career related questions',
 system: `You are a helpful, prefessional AI Carrer coach.....`,
 model:gemini({
-  model:"gemini-2.5-flash",
+  model:"gemini-1.5-flash",
   apiKey:process.env.GEMINI_API_KEY
 })
-})
+});
+
+
 
 export const AiCareerAgent=inngest.createFunction(
   {id:'AiCareerAgent'},
   {event:'AiCareerAgent'},
   async({event, step})=>{
-    const {userInput}= await event?.data;
-    const result=await AiCareerChatAgent.run(userInput)
+    const {userInput}=event?.data;
+    const result=await AiCareerChatAgent.run(userInput);
     return result;
     
   }
 
 )
+
