@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link' 
 import { v4 as uuidv4 } from 'uuid';
 
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
@@ -28,12 +28,36 @@ function AiToolCard({tool}: AiToolCardProps) {
   const id=uuidv4();
 const {user} =useUser();
 const router= useRouter();
+const [openRoadmapDialog, setOpenRoadmapDialog] = useState(false);
+
 
 const onClickButton = async ()=>{
+
+//resume analyzer
+
+
+
+//roadmap generator
+if(tool.path=='/ai-tools/ai-roadmap-agent'){
+
+  setOpenRoadmapDialog(true)
+  return;
+}
+
+
+
+
+
+
+
+
+
+
   //Create New record to History Table
   const result = await axios.post('/api/history', {
     recordId:id,
-    content:[]
+    content:[],
+    aiAgentType:tool.path
   });
 console.log(result);
 router.push(tool.path+"/"+id);
