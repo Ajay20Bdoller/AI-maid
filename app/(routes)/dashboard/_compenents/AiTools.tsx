@@ -27,7 +27,7 @@ name: 'Career Roadmap Generator',
 desc:'Find your roadmap',
 icon:'/roadmap.png',
 button: 'Generate Now',
-path : '/ai-chat'
+path : '/ai-tools/ai-roadmap-agent'
 
 },
 
