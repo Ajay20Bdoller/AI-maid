@@ -2,7 +2,7 @@ import { serve } from "inngest/next";
 // Update the import path if your inngest client is located elsewhere, for example:
 import { inngest } from "@/inngest/client";
 
-import { AiCareerAgent, helloWorld } from "@/inngest/functions";
+import { AiCareerAgent, AIRoadmapAgent, helloWorld } from "@/inngest/functions";
 // Or create the file './inngest/client.ts' with the following content:
 // export const inngest = /* your inngest client initialization */;
 
@@ -10,7 +10,8 @@ import { AiCareerAgent, helloWorld } from "@/inngest/functions";
 export const { GET, POST, PUT } = serve({
   client: inngest,
   functions: [
-     AiCareerAgent
+     AiCareerAgent,
+     AIRoadmapAgent
     /* your functions will be passed here later! */
   ],
 });
