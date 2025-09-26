@@ -29,8 +29,11 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const recordId = searchParams.get("recordId");
+  const user = await currentUser();
 
   try {
+
+
     if (recordId) {
       const result = await db
         .select()
@@ -41,6 +44,17 @@ export async function GET(req: Request) {
         return NextResponse.json({ success: true, content: result[0].content });
       }
     }
+else {
+
+ 
+ const result = await db
+        .select()
+        .from(HistoryTable)
+        .where(eq(HistoryTable.userEmail, user?.primaryEmailAddress)).orderBy(desc(HistoryTable.id));
+        return NextResponse.json(result)
+  
+}
+
     return NextResponse.json({ success: true, content: [] });
   } catch (e: any) {
     console.error(e);
