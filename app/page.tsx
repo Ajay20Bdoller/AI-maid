@@ -13,8 +13,9 @@ export default function Home() {
       <header className="flex  flex-wrap sm:justify-start  sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-neutral-800 dark:border-neutral-700">
         <nav className="relative  p-4 max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
           <div className="flex items-center justify-between">
-            <div>
-              <Image src={'/logo.svg'} alt="logo" width={150} height={150} />
+            <div className="flex text-2xl font-bold">
+              {/* <Image src={'/logo.svg'} alt="logo" width={150} height={150} /> */}
+              <h1 className="text-red-600">AI-maid</h1>
             </div>
           </div>
           <div id="navbar-collapse-with-animation" className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
@@ -41,8 +42,8 @@ export default function Home() {
 
           <div className="flex justify-center">
             <a className="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-sm text-gray-800 p-1 ps-3 rounded-full transition hover:border-gray-300 dark:bg-neutral-800 dark:border-neutral-700 dark:hover:border-neutral-600 dark:text-neutral-200"
-              href="tubeguruji.com" target="_blank">
-              TUBEGURUJI Membership - Join Now
+              href="https://github.com/Ajay20Bdoller?tab=overview&from=2025-09-01&to=2025-09-02.com" target="_blank">
+              My Github
               <span className="py-1.5 px-2.5 inline-flex justify-center items-center gap-x-2 rounded-full bg-gray-200 font-semibold text-sm text-gray-600 dark:bg-neutral-700 dark:text-neutral-400">
                 <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
               </span>
