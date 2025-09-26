@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
+import RoadmapGeneratorDialog from './RoadmapGeneratorDialog';
 
 
 
@@ -79,6 +80,11 @@ router.push(tool.path+"/"+id);
 onClick={onClickButton}
 >{tool.button}</Button>
 </Link>
+
+<RoadmapGeneratorDialog 
+openDialog={openRoadmapDialog}
+setOpenDialog={()=>setOpenRoadmapDialog(false) }
+/>
 
     </div>
   )
